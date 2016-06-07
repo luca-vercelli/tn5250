@@ -1,4 +1,5 @@
 BIN=/usr/bin
+#FIXME if I default BIN=/usr/local/bin, how should I modify debian/rules?
 
 clean:
 	#nothing to do
