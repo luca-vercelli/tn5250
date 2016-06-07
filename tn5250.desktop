@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=tn5250
+GenericName=AS400 telnet session
+Exec=tn5250
+Icon=xterm
+Terminal=false
+Categories=System
+Keywords=telnet;emulator;terminal;OS400
+

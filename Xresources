@@ -1,0 +1,4 @@
+*VT100.Translations: #override \
+              <Key>BackSpace: string("\033[D\033[3~")\n\
+              <Key>Home:      string(0x1b) string("[O")\n\
+              <Key>End:       string("\033[I")
