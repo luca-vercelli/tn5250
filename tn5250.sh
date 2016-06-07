@@ -1,7 +1,7 @@
 #!/bin/bash
 #Luca Vercelli 2016
 #released under GPL 2.0+
-#dependencies: xterm, telnet, bash
+#dependencies: xterm, telnet, bash, sleep
 
 VERSION="1.0"
 

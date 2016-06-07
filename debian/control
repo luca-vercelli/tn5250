@@ -9,7 +9,7 @@ Standards-Version: 3.9.8
 
 Package: tn5250
 Architecture: all
-Depends: ${misc:Depends}, xterm, bash
+Depends: ${misc:Depends}, xterm, bash, sleep
 Description: Terminal emulator to connect to AS/400 session.
  This program uses normal telnet protocol, not really 5250, so many features will lack.
  .
