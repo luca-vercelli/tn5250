@@ -49,8 +49,22 @@ else
   if [ ! \( -z "$DEFAULT_IP" \) ] ;
   then
     IP=$DEFAULT_IP
+  else
+    while [ -z "$IP" ] ;
+    do
+      echo "Connect to:"
+      read IP
+      if [ $? -eq 1 ] ;
+      then
+        #read failed because (we guess) tn5250 was launched from GUI
+        xterm -geometry "$GEOMETRY" -fa "$FONT" -fs "$FONTSIZE" -fg "$COLOR" -T "IP Prompt" "$0"
+        exit
+      fi
+    done
   fi
 fi
+
+#here IP is set
 
 ##### Run terminal #############################
 
@@ -61,24 +75,32 @@ fi
 #telnet -E means no way to exit
 SHELL=$(mktemp)
 echo "#!/bin/bash
-IP=$IP
-while [ -z \"\$IP\" ] ;
-do
-  echo \"Connect to:\"
-  read IP
-done;
 
-telnet -E \$IP
+#remove myself
+rm -rf \$0
 
+#launch telnet
+telnet -E $IP
+
+#if connection fails, let the user see the error
 if [ ! \( \$? -eq 0 \) ] ;
 then
   read
 fi
+
 " > $SHELL
 
 chmod o-w $SHELL
 chmod a+x $SHELL
+
 #FIXME should fix backspace, home, end
-xterm -geometry "$GEOMETRY" -fa "$FONT" -fs "$FONTSIZE" -fg "$COLOR" -T "$TITLE" $SHELL
-rm -rf $SHELL 
+
+echo "*VT100.Translations: #override \
+              <Key>BackSpace: string(\"\033[D\033[3~\")
+"|xrdb -merge
+
+xterm -geometry "$GEOMETRY" -fa "$FONT" -fs "$FONTSIZE" -fg "$COLOR" -T "$TITLE" "$SHELL" &
+
+#FIXME without sleep, when launched from menu, the previous command is not executed 
+sleep 1
 
