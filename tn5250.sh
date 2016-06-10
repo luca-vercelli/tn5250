@@ -92,11 +92,14 @@ fi
 chmod o-w $SHELL
 chmod a+x $SHELL
 
-#FIXME should fix backspace, home, end
+#FIXME should fix home, end, Shift+Fx, Ctrl+Esc.
+#Currently I can only fix backspace.
+#F1...F12, pgUp, pgDown, Del already work
 
 RESOURCES="*VT100.Translations: #override \
               <Key>BackSpace: string(\"\033[D\033[3~\")\n\
-              <Key>End:       string(\"^]\")
+              <Key>Home:      string(\"\0x47\00\")\n\
+              Shift <Key>F1:  string(\"F13\")
 "
 xterm -xrm "$RESOURCES" -geometry "$GEOMETRY" -fa "$FONT" -fs "$FONTSIZE" -fg "$COLOR" -T "$TITLE" "$SHELL" &
 
