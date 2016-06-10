@@ -72,7 +72,6 @@ fi
 #  --hide-menubar --geometry="$GEOMETRY" --title="$TITLE"
 
 #xterm accepts a single program as shell, with no arguments
-#telnet -E means no way to exit
 SHELL=$(mktemp)
 echo "#!/bin/bash
 
@@ -80,7 +79,7 @@ echo "#!/bin/bash
 rm -rf \$0
 
 #launch telnet
-telnet -E $IP
+telnet $IP
 
 #if connection fails, let the user see the error
 if [ ! \( \$? -eq 0 \) ] ;
@@ -95,11 +94,11 @@ chmod a+x $SHELL
 
 #FIXME should fix backspace, home, end
 
-echo "*VT100.Translations: #override \
-              <Key>BackSpace: string(\"\033[D\033[3~\")
-"|xrdb -merge
-
-xterm -geometry "$GEOMETRY" -fa "$FONT" -fs "$FONTSIZE" -fg "$COLOR" -T "$TITLE" "$SHELL" &
+RESOURCES="*VT100.Translations: #override \
+              <Key>BackSpace: string(\"\033[D\033[3~\")\n\
+              <Key>End:       string(\"^]\")
+"
+xterm -xrm "$RESOURCES" -geometry "$GEOMETRY" -fa "$FONT" -fs "$FONTSIZE" -fg "$COLOR" -T "$TITLE" "$SHELL" &
 
 #FIXME without sleep, when launched from menu, the previous command is not executed 
 sleep 1
