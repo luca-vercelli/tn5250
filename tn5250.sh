@@ -96,7 +96,7 @@ chmod a+x $SHELL
 #Currently I can only fix backspace.
 #pgUp, pgDown, Del already work
 #most shift+fx work. F21-F24 do not.
-#F2,F5,F8 not tested.
+#F2,F8 not tested.
 
 RESOURCES="*VT100.Translations: #override \
 		<Key>BackSpace: string(\"\033[D\033[3~\") \n \
@@ -106,7 +106,7 @@ RESOURCES="*VT100.Translations: #override \
 	~Shift	<Key>F2: string(0x1b) string(\"OQ\") \n \
 	~Shift	<Key>F3: string(0x1b) string(\"OR\") \n \
 	~Shift	<Key>F4: string(0x1b) string(\"OS\") \n \
-	~Shift	<Key>F5: string(0x1b) string(\"[16~\") \n \
+	~Shift	<Key>F5: string(0x1b) string(\"[15~\") \n \
 	~Shift	<Key>F6: string(0x1b) string(\"[17~\") \n \
 	~Shift	<Key>F7: string(0x1b) string(\"[18~\") \n \
 	~Shift	<Key>F8: string(0x1b) string(\"[19~\") \n \
@@ -122,10 +122,10 @@ RESOURCES="*VT100.Translations: #override \
 	Shift	<Key>F6: string(0x1b) string(\"[32~\") \n \
 	Shift	<Key>F7: string(0x1b) string(\"[33~\") \n \
 	Shift	<Key>F8: string(0x1b) string(\"[34~\") \n \
-	Shift	<Key>F9: string(0x1b) string(\"[35~\") \n \
-	Shift	<Key>F10: string(0x1b) string(\"[36~\") \n \
-	Shift	<Key>F11: string(0x1b) string(\"OT\") \n \
-	Shift	<Key>F12: string(0x1b) string(\"OV\")
+	Shift	<Key>F9: string(0x1b) string(\"[20;2~\") \n \
+	Shift	<Key>F10: string(0x1b) string(\"[22;2~\") \n \
+	Shift	<Key>F11: string(0x1b) string(\"[23;2~\") \n \
+	Shift	<Key>F12: string(0x1b) string(\"[12~\")
 "
 xterm -xrm "$RESOURCES" -geometry "$GEOMETRY" +rw -tn xterm-220 -fa "$FONT" -fs "$FONTSIZE" -fg "$COLOR" -T "$TITLE" "$SHELL" &
 
