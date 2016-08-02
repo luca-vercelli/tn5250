@@ -94,8 +94,9 @@ chmod a+x $SHELL
 
 #FIXME should fix home, end, Ctrl+Esc.
 #Currently I can only fix backspace.
-#F1...F12, pgUp, pgDown, Del already work
-#most shift+fx work. F23 / F24 do not.
+#pgUp, pgDown, Del already work
+#most shift+fx work. F21-F24 do not.
+#F2,F5,F8 not tested.
 
 RESOURCES="*VT100.Translations: #override \
 		<Key>BackSpace: string(\"\033[D\033[3~\") \n \
@@ -115,7 +116,7 @@ RESOURCES="*VT100.Translations: #override \
 	~Shift	<Key>F12: string(0x1b) string(\"[24~\") \n \
         Shift	<Key>F1: string(0x1b) string(\"[25~\")\n \
 	Shift	<Key>F2: string(0x1b) string(\"[26~\") \n \
-	Shift	<Key>F3: string(0x1b) string(\"[27~\") \n \
+	Shift	<Key>F3: string(0x1b) string(\"[28~\") \n \
 	Shift	<Key>F4: string(0x1b) string(\"[29~\") \n \
 	Shift	<Key>F5: string(0x1b) string(\"[31~\") \n \
 	Shift	<Key>F6: string(0x1b) string(\"[32~\") \n \
@@ -123,8 +124,8 @@ RESOURCES="*VT100.Translations: #override \
 	Shift	<Key>F8: string(0x1b) string(\"[34~\") \n \
 	Shift	<Key>F9: string(0x1b) string(\"[35~\") \n \
 	Shift	<Key>F10: string(0x1b) string(\"[36~\") \n \
-	Shift	<Key>F11: string(0x1b) string(\"[39~\") \n \
-	Shift	<Key>F12: string(0x1b) string(\"[40~\")
+	Shift	<Key>F11: string(0x1b) string(\"OT\") \n \
+	Shift	<Key>F12: string(0x1b) string(\"OV\")
 "
 xterm -xrm "$RESOURCES" -geometry "$GEOMETRY" +rw -tn xterm-220 -fa "$FONT" -fs "$FONTSIZE" -fg "$COLOR" -T "$TITLE" "$SHELL" &
 
