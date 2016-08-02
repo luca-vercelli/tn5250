@@ -101,7 +101,7 @@ chmod a+x $SHELL
 RESOURCES_XTERM="*VT100.Translations: #override \
 		<Key>BackSpace: string(\"\033[D\033[3~\") \n \
 		<Key>End: string(\"\0x47\00\") \n \
-		<Key>Home: string(0x1b) string(\"[3~\") \n \
+		<Key>Home: string(0x1b) string(\"[7~\") \n \
 	~Shift	<Key>F1: string(0x1b) string(\"OP\") \n \
 	~Shift	<Key>F2: string(0x1b) string(\"OQ\") \n \
 	~Shift	<Key>F3: string(0x1b) string(\"OR\") \n \
@@ -127,7 +127,7 @@ RESOURCES_XTERM="*VT100.Translations: #override \
 	Shift	<Key>F11: string(0x1b) string(\"[23;2~\") \n \
 	Shift	<Key>F12: string(0x1b) string(\"[24;2~\")
 "
-xterm -xrm "$RESOURCES_XTERM" -geometry "$GEOMETRY" +rw -tn xterm-xfree86 -fa "$FONT" -fs "$FONTSIZE" -fg "$COLOR" -T "$TITLE" "$SHELL" &
+xterm -xrm "$RESOURCES_XTERM" -geometry "$GEOMETRY" +rw -fa "$FONT" -fs "$FONTSIZE" -fg "$COLOR" -T "$TITLE" "$SHELL" &
 
 #Another possibility is to use rxvt.
 #currently not used:
@@ -158,9 +158,9 @@ RESOURCES_RXVT="*VT100.Translations: #override \
 	Shift	<Key>F9: string(0x1b) string(\"[23$\") \n \
 	Shift	<Key>F10: string(0x1b) string(\"[24$\") \n \
 	Shift	<Key>F11: string(0x1b) string(\"[11^\") \n \
-	Shift	<Key>F12: string(0x1b) string(\"[24;2\")
+	Shift	<Key>F12: string(0x1b) string(\"[24;2~\")
 "
-#rxvt -xrm "$RESOURCES_RXVT" -backspacekey ^H -geometry "$GEOMETRY" -tn xterm-xfree86 -fn "Courier--20" -fg "$COLOR" -bg "black" -title "$TITLE" -e "$SHELL" &
+#rxvt -xrm "$RESOURCES_RXVT" -backspacekey ^H -geometry "$GEOMETRY" -tn xterm-pippo -fn "Courier--20" -fg "$COLOR" -bg "black" -title "$TITLE" -e "$SHELL" &
 
 #FIXME without sleep, when launched from menu, the previous command is not executed 
 sleep 1
