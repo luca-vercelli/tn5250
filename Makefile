@@ -1,5 +1,5 @@
 BIN?=/usr/local/bin
-DESTDIR?=/
+DESTDIR?=
 
 clean:
 	#nothing to do
